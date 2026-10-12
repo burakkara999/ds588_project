@@ -1,0 +1,304 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\setlist{nosep, leftmargin=*}
+\captionsetup{font=small, labelfont=bf}
+\newcommand{\code}[1]{\texttt{\small #1}}
+
+\title{DS588 Project -- Phase 1\\[2pt] \large Data Collection and Preparation: TEFAS Funds and US-Listed ETFs}
+\author{Burak Kara}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\section{Overview}
+We compare Turkish investment funds traded on TEFAS with US-listed ETFs.
+The Phase~1 deliverable is a reproducible Python pipeline. It selects a universe of
+\textbf{50 TEFAS investment funds} and \textbf{50 US-listed ETFs}, downloads their
+\textbf{daily prices from 3~January~2022 to 5~October~2026} and converts all prices to
+\textbf{US dollars}. For the TEFAS funds it also records the trading and settlement terms
+needed to simulate realistic orders.
+The data were collected on 5~October~2026; the TEFAS trading terms were collected on
+12~October~2026.
+
+\section{Universe selection}
+\paragraph{Turkish funds (TEFAS).}
+TEFAS (Türkiye Elektronik Fon Alım Satım Platformu, operated by Takasbank) lists three
+fund types: 1{,}071 investment funds (\code{YAT}), 311 pension funds (\code{EMK}) and
+37 exchange-traded funds (\code{BYF}).
+We restrict the universe to \code{YAT} funds, for two reasons:
+\begin{itemize}
+  \item Pension funds can only be bought inside a private pension contract.
+  \item The \code{BYF}s are exchange-traded funds listed on Borsa Istanbul, not TEFAS mutual
+        funds, so they are kept out to separate ETFs cleanly from other investment funds.
+\end{itemize}
+The TEFAS price API also returns about 2{,}000 \code{YAT} funds, including roughly
+1{,}000 private (\emph{özel}) funds that are not traded on TEFAS. Many of these have a
+single investor yet hold billions of TRY, so they would dominate a size ranking. We
+therefore keep only the funds flagged as traded on TEFAS (\code{tefasDurum = true}) and
+rank them by total net assets (\emph{portföy büyüklüğü}) on 5~October~2026. The top~50
+hold 2.91~trillion TRY. Fund sizes range from 14.2 to 192.1~billion TRY.
+
+\paragraph{US ETFs.}
+The stockanalysis.com ETF screener lists 5{,}701 US-listed ETFs with assets under management
+(AUM). We cross-checked this list against the official Nasdaq ETF screener (5{,}254
+symbols, of which 5{,}196 match). We rank by AUM and keep the top~50, which hold
+\$8.77~trillion. AUM ranges from \$50~billion (XLF) to \$1.05~trillion (VOO).
+
+\paragraph{Universe composition.}
+Table~\ref{tab:composition} summarises the two universes. Selecting by size gives a liquid,
+investable universe in both markets, but the two universes differ in kind:
+\begin{itemize}
+  \item \textbf{TEFAS side:} dominated by FX-denominated \emph{serbest} (hedge-type) funds
+        and money-market funds.
+  \item \textbf{US side:} mostly equity index ETFs.
+\end{itemize}
+Full lists are given in Appendix~\ref{app:lists}.
+
+\begin{table}[h]
+\centering\small
+\caption{Composition of the selected universe (size as of 5 Oct 2026).}
+\label{tab:composition}
+\begin{tabular}{@{}lr@{\hspace{2.5em}}lr@{}}
+\toprule
+\multicolumn{2}{c}{\textbf{TEFAS (50 funds)}} & \multicolumn{2}{c}{\textbf{US ETFs (50)}}\\
+\cmidrule(r){1-2}\cmidrule(l){3-4}
+%%TEFAS_COMPOSITION%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Instrument identification}
+\begin{itemize}
+  \item \textbf{TEFAS funds} are open-ended mutual funds, not ETFs. They do not trade on
+        an exchange; units are created and redeemed at the daily net asset value (NAV)
+        through TEFAS. Each fund is identified by its three-letter TEFAS code and its ISIN.
+        The ISIN is stored in \code{tefas\_top50\_trading\_terms.csv}.
+  \item \textbf{US instruments} are exchange-traded products identified by their ticker.
+        Most are open-ended ETFs. The exceptions are QQQ, which is a unit investment trust,
+        and GLD, IAU and IBIT, which are grantor trusts holding physical gold or bitcoin.
+        All of them trade intraday on US exchanges, so we treat them as ETFs for
+        simulation purposes.
+\end{itemize}
+
+\section{Data sources}
+\begin{table}[h]
+\centering\small
+\caption{Data sources and access method.}
+\begin{tabularx}{\linewidth}{@{}lXl@{}}
+\toprule
+\textbf{Data} & \textbf{Source / access} & \textbf{Tool}\\
+\midrule
+TEFAS fund list, TEFAS status & \code{tefas.gov.tr/api/funds/fonGetiriBazliBilgiGetir} & \code{tefas-crawler}, \code{requests}\\
+TEFAS daily NAV, size, investors & \code{tefas.gov.tr/api/funds/fonGnlBlgSiraliGetir} & \code{pytefas} 0.4.1\\
+TEFAS trading terms (ISIN, cut-off, settlement) & TEFAS fund detail pages (\code{/tr/fon-detayli-analiz/<code>}) & browser session\\
+US ETF list and AUM & stockanalysis.com ETF screener & \code{requests}\\
+US ETF list (cross-check) & Nasdaq ETF screener API & \code{requests}\\
+US ETF daily prices & Yahoo Finance & \code{yfinance} 1.7.0\\
+USD/TRY exchange rate & Yahoo Finance, ticker \code{TRY=X} & \code{yfinance}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+All sources are free and publicly accessible, and none requires authentication. TEFAS
+limits each request to about one month of data and serves at most five years of history,
+so the pipeline requests the data in 28-day chunks.
+
+\section{Pipeline}
+The pipeline consists of three scripts:
+\begin{itemize}
+  \item \code{fetch\_tefas.py} builds the full TEFAS fund list with sizes.
+  \item \code{fetch\_us\_etfs.py} builds the full US ETF list with AUM.
+  \item \code{fetch\_prices.py} is the main script. Its parameters are \code{TOP\_N=50},
+        \code{START=2022-01-01} and \code{ADJUSTED=True}.
+\end{itemize}
+Running \code{python fetch\_prices.py} reproduces all price files in about 10~minutes. It
+performs the following steps:
+\begin{enumerate}
+  \item Rank the US ETFs by AUM, select the top~$N$ and download their daily closes from
+        Yahoo Finance.
+  \item Take the TEFAS-traded \code{YAT} funds, rank them by their latest portfolio size
+        and select the top~$N$.
+  \item Download the TEFAS NAV history in 28-day chunks and keep only the selected funds.
+  \item Download USD/TRY, align it to TEFAS dates and divide the TRY NAVs by the rate.
+  \item Save each market to a separate wide-format CSV file (date $\times$ instrument).
+\end{enumerate}
+
+\section{Prices, currency and adjustments}
+\begin{itemize}
+  \item \textbf{Frequency and period.} The series are daily, from 3~Jan~2022 to 5~Oct~2026.
+        There are 1{,}195 TEFAS dates and 1{,}193 US trading days.
+  \item \textbf{TEFAS prices.} The price is the official per-unit NAV published by TEFAS
+        once per business day, in TRY. FX-denominated funds (``Döviz'' or ``Döviz-Avro''
+        in the name) also publish their NAV in TRY. Their USD series start at about
+        \$1.00 for USD funds and about \$1.10 for EUR funds, and grow at roughly 4--5\% per
+        year, which confirms that the conversion is correct.
+  \item \textbf{Currency conversion.} We use $P^{\text{USD}}_t = P^{\text{TRY}}_t / \text{USDTRY}_t$,
+        where USDTRY is the Yahoo Finance daily close. On a TEFAS date with no FX quote we
+        use the last available rate (forward fill). The Yahoo rate is not the official
+        rate that fund managers use, so the conversion adds a small amount of day-to-day
+        noise. It does not bias long-horizon returns.
+  \item \textbf{Distributions, TEFAS.} TEFAS funds are accumulating: income is reinvested
+        and shows up in the NAV, so the NAV series is already a total-return series. The
+        exception is YNK, a dividend-paying (\emph{kâr payı ödeyen}) fund. Its payouts are
+        not in the NAV series, so its total return is understated (see
+        Section~\ref{sec:limits}).
+  \item \textbf{Distributions, US.} We use the Yahoo \emph{adjusted} close
+        (\code{auto\_adjust=True}), which is adjusted for splits and for dividends
+        (dividends are reinvested on the ex-date). Returns computed from this series are
+        total returns. Dividends must therefore \textbf{not} be added again in the
+        simulation, as this would double-count them.
+  \item \textbf{Fees.} Management fees and ETF expense ratios are already deducted in the
+        NAV and the market price. None of the 50 TEFAS funds charges an entry or exit
+        commission.
+\end{itemize}
+
+\section{Missing observations and cleaning}
+\begin{itemize}
+  \item \textbf{Late inception.} 28 of the 50 TEFAS funds and one ETF (IBIT, listed
+        11~Jan~2024) start after 3~Jan~2022. Their earlier cells are left empty
+        (\code{NaN}). This accounts for all 11{,}270 missing TEFAS cells and all 508
+        missing US cells. We do not backfill or interpolate. No series has gaps after its
+        first observation.
+  \item \textbf{Calendars.} The Turkish and US holiday calendars differ: 44 dates exist
+        only in the TEFAS file and 42 only in the US file. The two files are kept separate
+        and are not forward-filled onto a common calendar. Aligning them is a modelling
+        choice for Phase~2.
+  \item \textbf{Invalid prices.} Rows with a non-positive price are dropped.
+  \item \textbf{Flagged anomaly.} PTE starts at 0.01~TRY at its launch (29~Apr~2025) and
+        jumps to about 1~TRY on 12~May~2025, a factor of about 100 in one day. This is a
+        unit-price artefact, not a return. The observations before 12~May~2025 should be
+        dropped before computing returns. This step is not yet applied in the saved file.
+\end{itemize}
+
+\section{Trading, pricing and settlement characteristics}
+\paragraph{TEFAS funds.}
+TEFAS funds use \emph{forward pricing}: a buy or sell order is not executed at the last
+published NAV. It is executed at the next NAV calculated after the order. Orders entered
+after the fund's cut-off time are treated as orders for the next business day.
+
+Cash and fund units then settle after a fund-specific number of business days, the
+\emph{valör}. Table~\ref{tab:terms} summarises these terms for our 50 funds, as published
+on each fund's TEFAS page. The full table is in
+\code{data/tefas\_top50\_trading\_terms.csv}.
+
+\begin{table}[h]
+\centering\small
+\caption{Order cut-off and settlement lag (business days) of the 50 TEFAS funds.}
+\label{tab:terms}
+\begin{tabular}{@{}cccrl@{}}
+\toprule
+Cut-off & Buy valör & Sell valör & Funds & Typical type\\
+\midrule
+%%TERMS%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three further restrictions affect who can trade these funds and when:
+\begin{itemize}
+  \item \textbf{Closed funds.} Two funds, PRY and PSE, are currently closed to both
+        subscriptions and redemptions on TEFAS.
+  \item \textbf{Qualified investors only.} 33 of the 50 funds are \emph{serbest} funds,
+        which are legally restricted to qualified investors. A retail investor could not
+        buy them, which must be taken into account when the results are interpreted.
+  \item \textbf{Minimum amount.} All 50 funds have a minimum order of one unit.
+\end{itemize}
+
+\paragraph{US ETFs.}
+ETFs trade continuously on the exchange from 9:30 to 16:00~ET at market prices that can
+deviate slightly from NAV. Trades pay the bid--ask spread, which is small for these very
+large ETFs. Settlement is T+1 from 28~May~2024 onward; before that date it was T+2.
+
+\paragraph{Proposed simulation convention.}
+To avoid assuming that every fund can be traded immediately at an observed price:
+\begin{itemize}
+  \item A decision taken with information up to the close of day~$t$ is executed for
+        TEFAS funds at the NAV of day~$t{+}1$, the next price after the order.
+  \item The cash or units from a TEFAS order become available only after the fund's
+        buy or sell valör.
+  \item ETF orders are executed at the close of $t{+}1$, minus an assumed half-spread.
+  \item Funds closed to trading are excluded from the dates on which they were closed.
+\end{itemize}
+
+\section{Limitations and reproducible alternatives}\label{sec:limits}
+\begin{itemize}
+  \item \textbf{Survivorship and look-ahead bias.} The universe is selected by size on the
+        \emph{last} date, so funds that shrank or closed during 2022--2026 are excluded.
+        A point-in-time alternative is to rank by \code{portfolio\_size} (TEFAS) or AUM on
+        the first date of each rebalancing period. The pipeline already downloads
+        \code{portfolio\_size} for every date, so this requires no new data source.
+  \item \textbf{Unofficial endpoints.} The TEFAS JSON API and the stockanalysis.com
+        screener are undocumented and may change. For the US list, the Nasdaq screener
+        (symbols only) is an alternative. For TEFAS, the monthly bulletins on the KAP
+        (Public Disclosure Platform) fund pages are an alternative.
+  \item \textbf{History limit.} TEFAS serves only five years of history. Our start date
+        of 1~Jan~2022 must be moved forward once it falls outside that window. To preserve
+        the series, the saved CSV files should be archived.
+  \item \textbf{Trading terms are a snapshot.} The fund detail pages are protected by a
+        JavaScript bot challenge, so the trading terms were read through a browser session
+        on 12~Oct~2026 and stored as a snapshot. The terms may have differed earlier in the
+        sample. Each fund's prospectus (\emph{izahname}) on KAP is an authoritative,
+        reproducible alternative source.
+  \item \textbf{Dividend-paying fund.} YNK's distributions are not captured. They can be
+        added from the fund's KAP dividend announcements, or the fund can be excluded.
+\end{itemize}
+
+\section{Data dictionary}
+All files are in \code{data/}. The \code{date} column uses the format YYYY-MM-DD.
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{File} & \textbf{Content and columns}\\
+\midrule
+\code{us\_top50\_prices\_usd.csv} & Rows are trading dates and columns are the 50 ETF tickers. Values are adjusted daily closes in USD.\\
+\code{tefas\_top50\_prices\_usd.csv} & Rows are TEFAS dates and columns are the 50 fund codes. Values are the NAV per unit in USD (TRY NAV / USDTRY).\\
+\code{us\_top50.csv} & \code{symbol}, \code{name}, \code{assetClass}, \code{aum\_usd} (AUM in USD, 5~Oct~2026).\\
+\code{tefas\_top50.csv} & \code{fund\_code}, \code{fund\_name}, \code{portfolio\_size} (TRY), \code{investor\_count}, \code{date} (date the size was measured).\\
+\code{tefas\_top50\_trading\_terms.csv} & \code{fund\_code}, \code{isin}, \code{platform\_status}, \code{risk\_value}, \code{order\_start}, \code{order\_cutoff} (local time), \code{buy\_settlement\_days}, \code{sell\_settlement\_days}, \code{min\_buy\_units}, \code{min\_sell\_units}, \code{entry\_fee}, \code{exit\_fee}, \code{category}, \code{scraped\_on}.\\
+\code{tefas\_funds.csv} & All 1{,}419 TEFAS funds (\code{YAT}, \code{EMK} and \code{BYF}) with type, size (\code{portBuyukluk}, TRY), number of investors, market share and returns.\\
+\code{us\_etfs.csv} & All 5{,}701 US ETFs with \code{aum\_usd}, \code{assetClass}, \code{price}, \code{volume}, \code{expenseRatio}, \code{inceptionDate}, \code{issuer} and \code{in\_nasdaq\_list}.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\appendix
+\section{Selected instruments}\label{app:lists}
+\small
+\begin{longtable}{@{}rlllrccc@{}}
+\caption{TEFAS universe. Size is total net assets in billion TRY (5 Oct 2026). Type includes the fund's denomination (TRY, USD, EUR or gold). ``First'' is the first observation, shown when it is later than 3 Jan 2022.}\\
+\toprule
+\# & Code & Manager & Type & Size & Valör (B/S) & Cut-off & First\\
+\midrule\endfirsthead
+\toprule
+\# & Code & Manager & Type & Size & Valör (B/S) & Cut-off & First\\
+\midrule\endhead
+%%TEFAS_TABLE%%
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}rllp{8.4cm}r@{}}
+\caption{US ETF universe. AUM in billion USD (5 Oct 2026).}\\
+\toprule
+\# & Ticker & Class & Name & AUM\\
+\midrule\endfirsthead
+\toprule
+\# & Ticker & Class & Name & AUM\\
+\midrule\endhead
+%%US_TABLE%%
+\bottomrule
+\end{longtable}
+
+\end{document}

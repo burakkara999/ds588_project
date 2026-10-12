@@ -1,0 +1,159 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep, leftmargin=*}
+
+\title{DS588 Project -- Phase 1: Data Collection}
+\author{Burak Kara}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+\section{Finding the instruments}
+\begin{itemize}
+  \item \textbf{TEFAS:} We retrieved the full fund list with a Python script. The script
+        queries the public data service (API) that the TEFAS website~\cite{tefas} itself
+        uses to show its fund lists, through the \texttt{tefas-crawler}
+        package~\cite{tefascrawler}. The list contains 1{,}419 funds:
+        \begin{itemize}
+          \item 1{,}071 investment funds (YAT)
+          \item 311 pension funds (EMK)
+          \item 37 exchange-traded funds (BYF)
+        \end{itemize}
+        The list includes each fund's portfolio size and number of investors.
+  \item \textbf{US ETFs:} Yahoo Finance provides prices but no list of ETFs, so we took
+        the list from the ``All ETF Symbols'' page of stockanalysis.com~\cite{stockanalysis}.
+        No dedicated package exists for this source. Instead, a Python script uses the
+        \texttt{requests} library~\cite{requests} to download the JSON data behind the page,
+        and \texttt{pandas}~\cite{pandas} converts it into a table. For each ETF the data give
+        the ticker, name, asset class and assets under management (AUM). The list contains
+        5{,}701 ETFs, mainly in the following asset classes:
+        \begin{itemize}
+          \item equity (3{,}432)
+          \item fixed income (1{,}050)
+          \item alternatives (689)
+          \item asset allocation (195)
+          \item currency (151)
+          \item commodity (99)
+        \end{itemize}
+        We cross-checked it against the official ETF list from the Nasdaq ETF
+        screener~\cite{nasdaq}, which we downloaded the same way with \texttt{requests}.
+        The Nasdaq list has 5{,}254 symbols. Of these, 5{,}196 also appear in our list.
+\end{itemize}
+\section{Selecting the universe}
+\begin{itemize}
+  \item \textbf{TEFAS:} We kept only investment funds (YAT) that are traded on TEFAS,
+        excluding private funds not traded on the platform. We then selected the
+        \textbf{top 50 by portfolio size}.
+        \begin{itemize}
+          \item \emph{Portfolio size} (\emph{portföy büyüklüğü}) is the total value of the
+                fund in TRY, i.e.\ the unit price multiplied by the number of units held by
+                investors.
+          \item TEFAS publishes this value daily together with the fund price. We obtained it
+                with the \texttt{pytefas} Python package~\cite{pytefas} and ranked the funds
+                by their value on 5 October 2026.
+        \end{itemize}
+        The selected funds are mostly FX-denominated hedge-type (\emph{serbest}) funds,
+        money-market funds and gold funds.
+  \item \textbf{US:} We selected the \textbf{top 50 ETFs by AUM}.
+        \begin{itemize}
+          \item \emph{AUM} (assets under management) is the total market value of the assets
+                held by the ETF in USD, i.e.\ the ETF's net asset value per share multiplied
+                by the number of shares outstanding.
+          \item AUM is the ETF counterpart of the TEFAS portfolio size. It was included in the
+                stockanalysis.com ETF list described above, as of 5 October 2026.
+        \end{itemize}
+        The selected ETFs are mostly equity index ETFs (e.g.\ VOO, IVV, SPY, VTI, QQQ),
+        along with a few bond, gold and bitcoin ETFs.
+\end{itemize}
+
+\section{Price data}
+\begin{itemize}
+  \item \textbf{TEFAS:} We downloaded the daily fund prices from TEFAS using the
+        \texttt{pytefas} Python library~\cite{pytefas}.
+        \begin{itemize}
+          \item The price of a TEFAS fund is its \emph{net asset value (NAV) per unit}. This
+                is the market value of all assets held by the fund, minus its liabilities,
+                divided by the number of units.
+          \item TEFAS funds are not traded on an exchange. The NAV is calculated and
+                published once per business day in TRY, and investors buy and sell units at
+                this price.
+          \item We converted the prices to USD by dividing them by the daily USD/TRY rate
+                (ticker \texttt{TRY=X}) from Yahoo Finance~\cite{yahoo}.
+        \end{itemize}
+  \item \textbf{US:} We downloaded the daily closing prices (in USD) from Yahoo
+        Finance~\cite{yahoo} using the \texttt{yfinance} library~\cite{yfinance}.
+        \begin{itemize}
+          \item ETFs trade on the exchange throughout the day, so we use the market closing
+                price. For large ETFs this price stays very close to the NAV.
+          \item The prices are adjusted for dividends and splits.
+        \end{itemize}
+\end{itemize}
+
+\section{Frequency and period}
+\begin{itemize}
+  \item The data consist of daily closing prices in USD from \textbf{3 January 2022 to
+        5 October 2026}:
+        \begin{itemize}
+          \item about 1{,}195 trading days for TEFAS
+          \item about 1{,}193 trading days for the US
+        \end{itemize}
+  \item Funds launched after January 2022 have data only from their launch date onward.
+        This applies to 28 TEFAS funds and to IBIT among the ETFs.
+  \item The prices for each market are stored in a separate CSV file.
+\end{itemize}
+
+\section*{Acknowledgements}
+The data collection code and the project work for this phase were done with the help of
+Claude Code~\cite{claudecode}, Anthropic's AI coding assistant, running the Claude Opus 5.5
+model. This work covered finding the data sources, writing the Python scripts that download
+and process the data, and checking the resulting datasets. All outputs were reviewed by the
+author.
+
+\begin{thebibliography}{99}
+\bibitem{tefas}
+Takasbank. \emph{TEFAS -- Türkiye Elektronik Fon Alım Satım Platformu}.
+\url{https://www.tefas.gov.tr}. Accessed October 2026.
+
+\bibitem{stockanalysis}
+Stock Analysis. \emph{List of All ETF Ticker Symbols}.
+\url{https://stockanalysis.com/etf/}. Accessed 5 October 2026.
+
+\bibitem{nasdaq}
+Nasdaq. \emph{ETF Screener}.
+\url{https://www.nasdaq.com/market-activity/etf/screener}. Accessed 5 October 2026.
+
+\bibitem{yahoo}
+Yahoo Finance. \url{https://finance.yahoo.com}. Accessed October 2026.
+
+\bibitem{tefascrawler}
+B.~Yilmaz. \emph{tefas-crawler: Crawler for Turkey Electronic Fund Trading Platform},
+version 0.6.0. Python package.
+\url{https://github.com/burakyilmaz321/tefas-crawler}.
+
+\bibitem{pytefas}
+F.~Mirzazad. \emph{pytefas: Python client for TEFAS}, version 0.4.1. Python package.
+\url{https://github.com/mirzazad/pytefas}.
+
+\bibitem{yfinance}
+R.~Aroussi. \emph{yfinance: Download market data from Yahoo! Finance's API}, version 1.7.0.
+Python package. \url{https://github.com/ranaroussi/yfinance}.
+
+\bibitem{requests}
+K.~Reitz et al. \emph{Requests: HTTP for Humans}, version 2.34.2. Python package.
+\url{https://requests.readthedocs.io}.
+
+\bibitem{pandas}
+The pandas development team. \emph{pandas}, version 3.0.6. Python package.
+\url{https://pandas.pydata.org}.
+
+\bibitem{claudecode}
+Anthropic. \emph{Claude Code}. AI coding assistant, 2026.
+\url{https://claude.com/claude-code}. Accessed October 2026.
+\end{thebibliography}
+
+\end{document}

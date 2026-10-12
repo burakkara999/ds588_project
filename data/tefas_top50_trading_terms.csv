@@ -1,0 +1,51 @@
+﻿fund_code,isin,platform_status,risk_value,order_start,order_cutoff,buy_settlement_days,sell_settlement_days,min_buy_units,min_sell_units,entry_fee,exit_fee,category,scraped_on
+GRO,TRYGAPO01191,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+ONS,TRYISPO01181,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+PAL,TRYAKPO00708,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+EUZ,TRYGAPO00490,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+FPZ,TRYFIPO00065,TEFAS'ta işlem görüyor,-,09.00,17.30,1,2,1,1,-,-,Serbest Fon,2026-10-12
+YP4,TRYYAPO00691,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+DCB,TRYDNZP00793,TEFAS'ta işlem görüyor,2 / 7,09.00,13.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+YTY,TRYYAPO00832,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+DAS,TRYDNZP00892,TEFAS'ta işlem görüyor,5 / 7,09.00,16.00,1,1,1,1,-,-,Serbest Fon,2026-10-12
+GPL,TRYGAPO00060,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+KLU,TRYKTPY00202,TEFAS'ta işlem görüyor,1 / 7,09.00,12.30,0,0,1,1,-,-,Katılım Fonu,2026-10-12
+ONK,TRYAKPO01532,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+KZL,TRYKTPY00152,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Katılım Fonu,2026-10-12
+IDO,TRYISPO01462,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+YJY,TRYYAPO00311,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+DOV,TRYDNZP01031,TEFAS'ta işlem görüyor,6 / 7,09.00,16.00,1,1,1,1,-,-,Serbest Fon,2026-10-12
+PPJ,TRYAKPO01805,TEFAS'ta işlem görüyor,1 / 7,09.00,13.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+DLY,TRMDLYWWWWW9,TEFAS'ta işlem görüyor,1 / 7,09.00,13.30,0,0,1,1,-,-,Para Piyasası Fonu,2026-10-12
+ZP8,TRYZIPO00782,TEFAS'ta işlem görüyor,2 / 7,09.00,13.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+BGP,TRYAKPO00625,TEFAS'ta işlem görüyor,1 / 7,09.00,13.30,0,0,1,1,-,-,Para Piyasası Fonu,2026-10-12
+FKE,TRYFIPO00560,TEFAS'ta işlem görüyor,-,09.00,17.30,1,1,1,1,-,-,Serbest Fon,2026-10-12
+ZPR,TRYZIPO01103,TEFAS'ta işlem görüyor,2 / 7,09.00,13.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+PTE,TRYTEBP00542,TEFAS'ta işlem görüyor,-,09.00,13.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+OJK,TRYFIPO00271,TEFAS'ta işlem görüyor,6 / 7,09.00,17.30,1,1,1,1,-,-,Altın Fonu,2026-10-12
+ZBJ,TRYZIPO00394,TEFAS'ta işlem görüyor,1 / 7,09.00,13.30,0,0,1,1,-,-,Para Piyasası Fonu,2026-10-12
+DIP,TRYDNZP01635,TEFAS'ta işlem görüyor,2 / 7,09.00,13.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+YOZ,TRYDNZP01734,TEFAS'ta işlem görüyor,3 / 7,09.00,16.00,1,1,1,1,-,-,Serbest Fon,2026-10-12
+KSV,TRYKTPY00160,TEFAS'ta işlem görüyor,1 / 7,09.00,12.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+PVK,TRYAPYS00098,TEFAS'ta işlem görüyor,1 / 7,09.00,12.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+KTV,TRYKTPY00061,TEFAS'ta işlem görüyor,1 / 7,09.00,12.30,0,0,1,1,-,-,Kisa Vadeli Kira Sertifikalari Katilim Fonu,2026-10-12
+YKT,TRYYKBK00110,TEFAS'ta işlem görüyor,6 / 7,09.00,17.45,1,1,1,1,-,-,Altın Fonu,2026-10-12
+IOO,TRYISPO00969,TEFAS'ta işlem görüyor,2 / 7,09.00,13.30,0,0,1,1,-,-,Para Piyasası Fonu,2026-10-12
+OJB,TRYFIPO00222,TEFAS'ta işlem görüyor,-,09.00,17.30,1,1,1,1,-,-,Serbest Fon,2026-10-12
+HSL,TRMDM2WWWWW0,TEFAS'ta işlem görüyor,-,09.00,13.30,0,0,1,1,-,-,Para Piyasası Fonu,2026-10-12
+KTR,TRYKTPY00038,TEFAS'ta işlem görüyor,1 / 7,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+TTA,TRYTISB00422,TEFAS'ta işlem görüyor,6 / 7,09.00,17.45,1,1,1,1,-,-,Altın Fonu,2026-10-12
+KDL,TRYKTPY00301,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+GTA,TRYGRAN00027,TEFAS'ta işlem görüyor,6 / 7,09.00,17.45,1,1,1,1,-,-,Altın Fonu,2026-10-12
+IUV,TRYISPO00860,TEFAS'ta işlem görüyor,-,09.00,17.45,1,3,1,1,-,-,Serbest Fon,2026-10-12
+YNK,TRYYAPO00733,TEFAS'ta işlem görüyor,-,09.00,17.45,1,2,1,1,-,-,Serbest Fon,2026-10-12
+IUF,TRYISPO00837,TEFAS'ta işlem görüyor,-,09.00,17.45,1,3,1,1,-,-,Serbest Fon,2026-10-12
+AFT,TRYAKBK00144,TEFAS'ta işlem görüyor,6 / 7,09.00,17.45,1,2,1,1,-,-,Hisse Senedi Fonu,2026-10-12
+PRY,TRYPSLP00028,"Fon Alımına Kapalı, Fon Bozumuna Kapalı",2 / 7,09.00,13.30,0,0,1,1,-,-,Para Piyasası Fonu,2026-10-12
+AFO,TRYAKBK00052,TEFAS'ta işlem görüyor,6 / 7,09.00,17.45,1,1,1,1,-,-,Altın Fonu,2026-10-12
+NSD,TRYNRPO00243,TEFAS'ta işlem görüyor,-,09.00,17.45,1,2,1,1,-,-,Serbest Fon,2026-10-12
+KAV,TRYKTPY00293,TEFAS'ta işlem görüyor,-,09.00,17.45,1,1,1,1,-,-,Serbest Fon,2026-10-12
+PSE,TRYATLP00309,"Fon Alımına Kapalı, Fon Bozumuna Kapalı",2 / 7,09.00,13.30,0,0,1,1,-,-,Serbest Fon,2026-10-12
+FIL,TRYBEUR00017,TEFAS'ta işlem görüyor,1 / 7,09.00,13.30,0,0,1,1,-,-,Para Piyasası Fonu,2026-10-12
+TUA,TRYTEBK00030,TEFAS'ta işlem görüyor,6 / 7,09.00,17.45,1,1,1,1,-,-,Altın Fonu,2026-10-12
+FBI,TRYFIBP00252,TEFAS'ta işlem görüyor,-,09.00,17.30,1,1,1,1,-,-,Serbest Fon,2026-10-12

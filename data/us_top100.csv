@@ -1,0 +1,101 @@
+symbol,name,assetClass,aum_usd
+VOO,Vanguard S&P 500 ETF,Equity,1046284128760.0
+IVV,iShares Core S&P 500 ETF,Equity,888288575656.0
+SPY,State Street SPDR S&P 500 ETF,Equity,815325265177.0
+VTI,Vanguard Morningstar Total Stock Market ETF,Equity,696152911179.0
+QQQ,Invesco QQQ Trust Series I,Equity,505192688501.0
+VUG,Vanguard Morningstar Growth ETF,Equity,235959299241.0
+VEA,Vanguard FTSE Developed Markets ETF,Equity,232961160719.0
+IEFA,iShares Core MSCI EAFE ETF,Equity,190868689227.0
+VTV,Vanguard Morningstar Value ETF,Equity,185216661454.0
+SPYM,State Street SPDR Portfolio S&P 500 ETF,Equity,175941674067.0
+VXUS,Vanguard Total International Stock ETF,Equity,164117649808.0
+IEMG,iShares Core MSCI Emerging Markets ETF,Equity,162189633375.0
+BND,Vanguard Total Bond Market ETF,Fixed Income,161228051188.0
+VGT,Vanguard Information Technology ETF,Equity,157996956672.0
+GLD,SPDR Gold Shares,Commodity,142166004142.0
+AGG,iShares Core U.S. Aggregate Bond ETF,Fixed Income,135771060220.0
+XLK,State Street Technology Select Sector SPDR ETF,Equity,130243917577.0
+IWF,iShares Russell 1000 Growth ETF,Equity,129467490568.0
+VWO,Vanguard FTSE Emerging Markets ETF,Equity,125927178845.0
+IJH,iShares Core S&P Mid-Cap ETF,Equity,123231273940.0
+SGOV,iShares 0-3 Month Treasury Bond ETF,Fixed Income,113105169516.0
+QQQM,Invesco NASDAQ 100 ETF,Equity,111671274354.0
+VIG,Vanguard Dividend Appreciation ETF,Equity,109942438399.0
+SCHD,Schwab US Dividend Equity ETF,Equity,108671107833.0
+VO,Vanguard Morningstar Mid-Cap ETF,Equity,106093325508.0
+IJR,iShares Core S&P Small Cap ETF,Equity,104038845572.0
+ITOT,iShares Core S&P Total U.S. Stock Market ETF,Equity,96923936391.0
+RSP,Invesco S&P 500 Equal Weight ETF,Equity,95432054658.0
+BNDX,Vanguard Total International Bond ETF,Fixed Income,82808982976.0
+VT,Vanguard Total World Stock ETF,Equity,82431593948.0
+IWD,iShares Russell 1000 Value ETF,Equity,81448457106.0
+VYM,Vanguard High Dividend Yield Index ETF,Equity,79558753122.0
+IVW,iShares S&P 500 Growth ETF,Equity,79206483747.0
+IWM,iShares Russell 2000 ETF,Equity,79026382935.0
+VB,Vanguard Morningstar Small-Cap ETF,Equity,78168434723.0
+SMH,VanEck Semiconductor ETF,Equity,77812466087.0
+EFA,iShares MSCI EAFE ETF,Equity,76809000640.0
+SCHX,Schwab U.S. Large-Cap ETF,Equity,74464655726.0
+VEU,Vanguard FTSE All-World ex-US Index Fund,Equity,68541620184.0
+SCHF,Schwab International Equity ETF,Equity,67933103124.0
+IBIT,iShares Bitcoin Trust ETF,Currency,67589503046.0
+VCIT,Vanguard Intermediate-Term Corporate Bond ETF,Fixed Income,65589022823.0
+SCHG,Schwab U.S. Large-Cap Growth ETF,Equity,64715284786.0
+IAU,iShares Gold Trust,Commodity,62444586938.0
+IXUS,iShares Core MSCI Total International Stock ETF,Equity,59094784439.0
+SPYG,State Street SPDR Portfolio S&P 500 Growth ETF,Equity,57331823450.0
+IWR,iShares Russell Midcap ETF,Equity,55838282433.0
+VV,Vanguard Morningstar Large-Cap ETF,Equity,54652540626.0
+BIL,State Street SPDR Bloomberg 1-3 Month T-Bill ETF,Fixed Income,50701513061.0
+XLF,State Street Financial Select Sector SPDR ETF,Equity,50004428396.0
+VTEB,Vanguard Tax-Exempt Bond ETF,Fixed Income,49994444083.0
+DFAC,Dimensional U.S. Core Equity 2 ETF,Equity,49072555997.0
+IWB,iShares Russell 1000 ETF,Equity,48932394492.0
+SOXX,iShares Semiconductor ETF,Equity,48814592223.0
+IVE,iShares S&P 500 Value ETF,Equity,48599496838.0
+QUAL,iShares MSCI USA Quality Factor ETF,Equity,48307786363.0
+IUSB,iShares Core Total USD Bond Market ETF,Fixed Income,48118652496.0
+MUB,iShares National Muni Bond ETF,Fixed Income,47949332785.0
+VONG,Vanguard Russell 1000 Growth ETF,Equity,47759245195.0
+TLT,iShares 20+ Year Treasury Bond ETF,Fixed Income,47196617384.0
+BSV,Vanguard Short-Term Bond ETF,Fixed Income,45334788619.0
+JEPI,JPMorgan Equity Premium Income ETF,Equity,45319892027.0
+DIA,State Street SPDR Dow Jones Industrial Average ETF Trust,Equity,45193693122.0
+SCHB,Schwab U.S. Broad Market ETF,Equity,44859946484.0
+JEPQ,JPMorgan NASDAQ Equity Premium Income ETF,Equity,44532872316.0
+VCSH,Vanguard Short-Term Corporate Bond ETF,Fixed Income,44176815191.0
+XLV,State Street Health Care Select Sector SPDR ETF,Equity,42813221494.0
+DYNF,iShares U.S. Equity Factor Rotation Active ETF,Equity,42377746002.0
+JPST,JPMorgan Ultra-Short Income ETF,Fixed Income,42325581235.0
+DGRO,iShares Core Dividend Growth ETF,Equity,42206153693.0
+IEF,iShares 7-10 Year Treasury Bond ETF,Fixed Income,41447151381.0
+GOVT,iShares U.S. Treasury Bond ETF,Fixed Income,41356965827.0
+SPDW,State Street SPDR Portfolio Developed World ex-US ETF,Equity,40972866189.0
+XLE,State Street Energy Select Sector SPDR ETF,Equity,40167889439.0
+VGIT,Vanguard Intermediate-Term Treasury ETF,Fixed Income,39690517319.0
+TQQQ,ProShares UltraPro QQQ,Equity,39332535290.0
+CGDV,Capital Group Dividend Value ETF,Equity,38705270404.0
+VNQ,Vanguard Real Estate ETF,Equity,35924470304.0
+SPYV,State Street SPDR Portfolio S&P 500 Value ETF,Equity,35849953017.0
+VBR,Vanguard Morningstar Small-Cap Value ETF,Equity,35560265816.0
+MBB,iShares MBS ETF,Fixed Income,35441166693.0
+MGK,Vanguard Morningstar Mega Cap Growth ETF,Equity,35277597089.0
+VGSH,Vanguard Short-Term Treasury ETF,Fixed Income,35176541905.0
+IUSG,iShares Core S&P U.S. Growth ETF,Equity,34461551371.0
+ACWI,iShares MSCI ACWI ETF,Equity,33105291120.0
+IDEV,iShares Core MSCI International Developed Markets ETF,Equity,32208180472.0
+JAAA,Janus Henderson AAA CLO ETF,Fixed Income,31765393731.0
+EEM,iShares MSCI Emerging Markets ETF,Equity,31424237423.0
+GLDM,SPDR Gold Minishares Trust of beneficial interest,Commodity,30958556668.0
+AVUV,Avantis U.S. Small Cap Value ETF,Equity,30733786497.0
+VXF,Vanguard Extended Market ETF,Equity,30695892012.0
+XLI,State Street Industrial Select Sector SPDR ETF,Equity,30591426797.0
+EFV,iShares MSCI EAFE Value ETF,Equity,30361622299.0
+SLV,iShares Silver Trust,Commodity,30111519613.0
+VGK,Vanguard FTSE Europe ETF,Equity,29461845622.0
+AVEM,Avantis Emerging Markets Equity ETF,Equity,28740049069.0
+VOOG,Vanguard S&P 500 Growth ETF,Equity,28247705700.0
+BIV,Vanguard Intermediate-Term Bond ETF,Fixed Income,27994628215.0
+FBND,Fidelity Total Bond ETF,Fixed Income,27902264261.0
+FNDX,Schwab Fundamental U.S. Large Company ETF,Equity,27320853319.0
