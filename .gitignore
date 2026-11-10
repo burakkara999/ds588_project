@@ -20,3 +20,6 @@ __pycache__/
 # Editors
 .vscode/
 .idea/
+
+# Derived data: rebuilt by build_returns.py from the price files
+data/*_returns.csv

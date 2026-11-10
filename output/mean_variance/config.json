@@ -1,0 +1,15 @@
+{
+  "universe": "2026-01",
+  "start": "2026-01-01",
+  "end": "2026-09-30",
+  "lookback": 126,
+  "lam": 10.0,
+  "w_max": 0.2,
+  "cost_bps": 5.0,
+  "exec_lag": 1,
+  "capital": 100000.0,
+  "solver": "gurobi",
+  "sensitivity": true,
+  "out": "output/mean_variance",
+  "n_assets": 100
+}

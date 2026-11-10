@@ -1,0 +1,101 @@
+rank,symbol,name,aum_usd,assetClass
+1,VOO,Vanguard S&P 500 ETF,839344000000.0,Equity
+2,IVV,iShares Core S&P 500 ETF,766202000000.0,Equity
+3,SPY,SPDR S&P 500 ETF Trust,717297000000.0,Equity
+4,VTI,Vanguard Total Stock Market ETF,574934000000.0,Equity
+5,QQQ,Invesco QQQ Trust Series I,410586000000.0,Equity
+6,VUG,Vanguard Growth ETF,205113000000.0,Equity
+7,VEA,Vanguard FTSE Developed Markets ETF,193970000000.0,Equity
+8,IEFA,iShares Core MSCI EAFE ETF,163276000000.0,Equity
+9,VTV,Vanguard Value ETF,158657000000.0,Equity
+10,GLD,SPDR Gold Shares,150290000000.0,Commodity
+11,BND,Vanguard Total Bond Market ETF,146472000000.0,Fixed Income
+12,AGG,iShares Core U.S. Aggregate Bond ETF,135645000000.0,Fixed Income
+13,IWF,iShares Russell 1000 Growth ETF,126967000000.0,Equity
+14,VXUS,Vanguard Total International Stock ETF,120939000000.0,Equity
+15,IEMG,iShares Core MSCI Emerging Markets ETF,119868000000.0,Equity
+16,VGT,Vanguard Information Technology ETF,113852000000.0,Equity
+17,VWO,Vanguard FTSE Emerging Markets ETF,105108000000.0,Equity
+18,IJH,iShares Core S&P Mid-Cap ETF,103432000000.0,Equity
+19,VIG,Vanguard Dividend Appreciation ETF,102676000000.0,Equity
+20,SPYM,State Street SPDR Portfolio S&P 500 ETF,97477200000.0,Equity
+21,XLK,State Street Technology Select Sector SPDR ETF,93412300000.0,Equity
+22,VO,Vanguard Mid-Cap ETF,91616900000.0,Equity
+23,IJR,iShares Core S&P Small-Cap ETF,89087200000.0,Equity
+24,ITOT,iShares Core S&P Total U.S. Stock Market ETF,80706000000.0,Equity
+25,RSP,Invesco S&P 500® Equal Weight ETF,75809400000.0,Equity
+26,BNDX,Vanguard Total International Bond ETF,74329700000.0,Fixed Income
+27,IWM,iShares Russell 2000 ETF,74267300000.0,Equity
+28,SCHD,Schwab US Dividend Equity ETF,72095200000.0,Equity
+29,EFA,iShares MSCI EAFE ETF,70672000000.0,Equity
+30,QQQM,Invesco NASDAQ 100 ETF,70652100000.0,Equity
+31,IWD,iShares Russell 1000 Value ETF,70339700000.0,Equity
+32,VB,Vanguard Small Cap ETF,69684100000.0,Equity
+33,VYM,Vanguard High Dividend Yield Index ETF,69388000000.0,Equity
+34,IAU,iShares Gold Trust,69324400000.0,Commodity
+35,SGOV,iShares 0-3 Month Treasury Bond ETF,68552700000.0,Fixed Income
+36,IBIT,iShares Bitcoin Trust ETF,67914100000.0,Currency
+37,IVW,iShares S&P 500 Growth ETF,67061600000.0,Equity
+38,SCHX,Schwab U.S. Large-Cap ETF,63798800000.0,Equity
+39,VT,Vanguard Total World Stock ETF,60339200000.0,Equity
+40,VCIT,Vanguard Intermediate-Term Corporate Bond ETF,59705000000.0,Fixed Income
+41,SCHF,Schwab International Equity ETF,55510000000.0,Equity
+42,VEU,Vanguard FTSE All-World ex-US Index Fund,54249700000.0,Equity
+43,XLF,State Street Financial Select Sector SPDR ETF,53507500000.0,Equity
+44,SCHG,Schwab U.S. Large-Cap Growth ETF,53300600000.0,Equity
+45,IXUS,iShares Core MSCI Total International Stock ETF,52033900000.0,Equity
+46,QUAL,iShares MSCI USA Quality Factor ETF,48369200000.0,Equity
+47,IVE,iShares S&P 500 Value ETF,48312800000.0,Equity
+48,TLT,iShares 20+ Year Treasury Bond ETF,47813500000.0,Fixed Income
+49,VV,Vanguard Large Cap ETF,47582300000.0,Equity
+50,IWR,iShares Russell Midcap ETF,46848700000.0,Equity
+51,IWB,iShares Russell 1000 ETF,46626000000.0,Equity
+52,SPYG,State Street SPDR Portfolio S&P 500 Growth ETF,45629300000.0,Equity
+53,IEF,iShares 7-10 Year Treasury Bond ETF,45607800000.0,Fixed Income
+54,DIA,SPDR Dow Jones Industrial Average ETF Trust,44722100000.0,Equity
+55,BIL,State Street SPDR Bloomberg 1-3 Month T-Bill ETF,42691600000.0,Fixed Income
+56,VTEB,Vanguard Tax-Exempt Bond ETF,42501900000.0,Fixed Income
+57,BSV,Vanguard Short-Term Bond ETF,42448300000.0,Fixed Income
+58,JEPI,JPMorgan Equity Premium Income Fund,42025300000.0,Equity
+59,MUB,iShares National Muni Bond ETF,41515900000.0,Fixed Income
+60,DFAC,Dimensional U.S. Core Equity 2 ETF,40433000000.0,Equity
+61,VCSH,Vanguard Short-Term Corporate Bond ETF,40115100000.0,Fixed Income
+62,XLV,State Street Health Care Select Sector SPDR ETF,39934300000.0,Equity
+63,SLV,iShares Silver Trust,39553200000.0,Commodity
+64,MBB,iShares MBS ETF,39094800000.0,Fixed Income
+65,SCHB,Schwab U.S. Broad Market ETF,38466200000.0,Equity
+66,SMH,VanEck Semiconductor ETF,37588200000.0,Equity
+67,VGIT,Vanguard Intermediate-Term Treasury ETF,36452900000.0,Fixed Income
+68,VONG,Vanguard Russell 1000 Growth ETF,36341500000.0,Equity
+69,DGRO,iShares Core Dividend Growth ETF,36173500000.0,Equity
+70,JPST,JPMorgan Ultra-Short Income ETF,35521800000.0,Fixed Income
+71,IUSB,iShares Core Total USD Bond Market ETF,34527800000.0,Fixed Income
+72,VNQ,Vanguard Real Estate ETF,34155700000.0,Equity
+73,GOVT,iShares U.S. Treasury Bond ETF,33572800000.0,Fixed Income
+74,SPDW,SPDR Portfolio Developed World ex-US ETF,33552600000.0,Equity
+75,JEPQ,JPMorgan NASDAQ Equity Premium Income ETF,33034000000.0,Equity
+76,MGK,Vanguard Mega Cap Growth ETF,32613200000.0,Equity
+77,VBR,Vanguard Small Cap Value ETF,32485300000.0,Equity
+78,SPYV,State Street SPDR Portfolio S&P 500 Value ETF,31798800000.0,Equity
+79,DYNF,iShares U.S. Equity Factor Rotation Active ETF,31212900000.0,Equity
+80,TQQQ,ProShares UltraPro QQQ,30187300000.0,Equity
+81,LQD,iShares iBoxx $ Investment Grade Corporate Bond ETF,30167500000.0,Fixed Income
+82,VGK,Vanguard FTSE Europe ETF,29449800000.0,Equity
+83,OEF,iShares S&P 100 ETF,29358000000.0,Equity
+84,EFV,iShares MSCI EAFE Value ETF,27762300000.0,Equity
+85,XLC,State Street Communication Services Select Sector SPDR ETF,27283100000.0,Equity
+86,BIV,Vanguard Intermediate-Term Bond ETF,27150000000.0,Fixed Income
+87,CGDV,Capital Group Dividend Value ETF,26772800000.0,Equity
+88,XLE,State Street Energy Select Sector SPDR ETF,26626500000.0,Equity
+89,IUSG,iShares Core S&P U.S. Growth ETF,26520500000.0,Equity
+90,GDX,VanEck Gold Miners ETF,26114200000.0,Equity
+91,VGSH,Vanguard Short-Term Treasury ETF,25803800000.0,Fixed Income
+92,XLI,State Street Industrial Select Sector SPDR ETF,25772700000.0,Equity
+93,GLDM,SPDR Gold Minishares Trust of beneficial interest,25638800000.0,Commodity
+94,USHY,iShares Broad USD High Yield Corporate Bond ETF,25543700000.0,Fixed Income
+95,ACWI,iShares MSCI ACWI ETF,25350300000.0,Equity
+96,VXF,Vanguard Extended Market ETF,25260100000.0,Equity
+97,IUSV,iShares Core S&P U.S. Value ETF,24609600000.0,Equity
+98,XLY,State Street Consumer Discretionary Select Sector SPDR ETF,24539800000.0,Equity
+99,MDY,SPDR S&P Midcap 400 ETF Trust,24413100000.0,Equity
+100,IDEV,iShares Core MSCI International Developed Markets ETF,24294800000.0,Equity
